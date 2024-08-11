@@ -1,110 +1,180 @@
-/* Global Styles */
+/* Grundstil für die Website */
 body {
-    background-color: #121212;
+    font-family: 'Roboto', sans-serif;
     color: #e0e0e0;
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    background-color: #121212;
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
 }
 
-h1, h2, h3 {
-    color: #bb86fc;
-    margin-bottom: 20px;
-}
-
-p, ul {
-    margin-bottom: 20px;
-}
-
-#main-content {
-    display: none; /* Versteckt, bis das Intro-GIF verschwindet */
-    padding: 20px;
-}
-
+/* Intro GIF */
 #intro-gif {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #000;
+    z-index: 1000;
+    animation: fadeIn 3s ease-out;
 }
 
-/* Navigationsleiste */
-.sidebar-nav {
+#intro-gif img {
+    max-width: 80%;
+    height: auto;
+}
+
+/* Verstecktes Hauptfenster */
+.hidden {
+    display: none;
+}
+
+#main-content {
+    padding: 40px 20px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    animation: fadeIn 1s ease-out;
+    display: none; /* Initial verstecken */
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 50px 20px;
     background-color: #1c1c1c;
-    padding: 15px;
+    color: #ffffff;
+    border-bottom: 5px solid #bb86fc;
+    animation: slideInDown 1s ease-out;
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+    animation: bounce 1s infinite;
+    font-family: 'Roboto Mono', monospace;
+}
+
+header p {
+    font-size: 1.5em;
+    color: #b0b0b0;
+}
+
+/* Navigation */
+nav {
     position: sticky;
     top: 0;
+    background-color: #1c1c1c;
+    padding: 10px 0;
     z-index: 1000;
-    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: #bb86fc;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.5s ease-out;
+}
+
+nav ul li a:hover {
+    background-color: #8a2be2;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #1c1c1c;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .sidebar-nav ul {
     list-style-type: none;
     padding: 0;
-}
-
-.sidebar-nav ul li {
-    display: inline;
-    margin-right: 15px;
+    margin: 0;
 }
 
 .sidebar-nav ul li a {
-    color: #bb86fc;
+    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    padding: 10px;
+    background-color: #bb86fc;
+    border-radius: 5px;
+    display: block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .sidebar-nav ul li a:hover {
-    color: #ffffff;
-}
-
-/* Sektionen */
-section {
-    margin-bottom: 60px;
-}
-
-/* Spenden-Button Sektion */
-#donate-section {
-    text-align: center;
-    margin: 40px 0;
-}
-
-.donate-button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #bb86fc;
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.2em;
-    font-weight: bold;
-    border-radius: 50px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-.donate-button span {
-    display: inline-flex;
-    align-items: center;
-}
-
-.donate-button:hover {
     background-color: #8a2be2;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
+    transform: scale(1.1);
 }
 
-.donate-button:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+/* Abschnitte */
+section {
+    margin: 80px auto; /* Mehr Platz für Scrollen */
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #2c2c2c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 800px; /* Maximalbreite für größere Bildschirme */
 }
 
-/* Fähigkeiten */
-#skills ul {
-    list-style-type: disc;
-    padding-left: 20px;
+/* Abschnittsüberschriften */
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #bb86fc;
+    padding-bottom: 10px;
+    color: #bb86fc;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Listen */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    opacity: 0; /* Anfangs unsichtbar für Animation */
+    transform: translateY(20px); /* Anfangs verschoben für Animation */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 /* Projekte */
@@ -116,6 +186,8 @@ section {
     color: #e0e0e0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0; /* Anfangs unsichtbar für Animation */
+    transform: translateY(20px); /* Anfangs verschoben für Animation */
 }
 
 .project:hover {
@@ -123,7 +195,6 @@ section {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
-/* Kontakt */
 #contact a {
     color: #bb86fc;
     text-decoration: none;
@@ -162,7 +233,7 @@ footer {
     }
 
     .sidebar-nav {
-        display: none;
+        display: none; /* Sidebar bei größeren Bildschirmen ausblenden */
     }
 }
 
